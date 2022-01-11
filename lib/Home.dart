@@ -35,8 +35,32 @@ class _HomeState extends State<Home> {
             itemBuilder: (context, indice){
 
               return ListTile(
-                title: Text(_itens[indice]["titulo"].toString()),
-                subtitle: Text(_itens[indice]["descricao"].toString()),
+                title: Text(_itens[indice]["titulo"]),
+                subtitle: Text(_itens[indice]["descricao"]),
+                onTap: (){
+                  showDialog(
+                      context: context,
+                      builder: (context){
+                        return AlertDialog(
+                          title: Text(_itens[indice]["titulo"]),
+                          titlePadding: EdgeInsets.all(16),
+                          titleTextStyle: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                          content: Text(_itens[indice]["descricao"]),
+                          contentPadding: EdgeInsets.all(16),
+                          actions: [
+                            TextButton(
+                                onPressed: (){Navigator.pop(context);},
+                                child: Text("FECHAR")),
+                            TextButton(
+                                onPressed: (){Navigator.pop(context);},
+                                child: Text("FECHAR")),
+                          ],
+                        );
+                      });
+                },
               );
             },
             ),
